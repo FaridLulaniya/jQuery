@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.7.1.min.js"></script>
+</head>
+<style>
+    body {
+        background: #EFEFEF;
+        font-weight: bold;
+        font-family: "Lucida Grande", sans-serif;
+        padding: 20px;
+        color: #333;
+        font-size: 12px;
+        letter-spacing: -1px;
+    }
+
+    input {
+        font-size: 21px;
+        font-weight: bold;
+        display: block;
+        margin: 20px 0;
+        outline: 0;
+        border: 0;
+        padding: 10px 10px;
+        font-size: 13px;
+        width: 300px;
+        border-radius: 4px;
+        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+    }
+    button{
+        padding: 5px 20px;
+        color: white;
+        border-radius: 5px;
+        background-color: black;
+    }
+</style>
+
+<body>
+    <h1>Personal Info</h1>
+    <form id="contact">
+        <input type="text" placeholder="First Name" id="cmnt" />
+        <input type="text" placeholder="Last Name" id="cmnt-1" />
+        <input type="text" placeholder="Email" id="cmnt-2" />
+        <button type="submit">Submit</button>
+        <p></p>
+    </form>
+    <script>
+        $(document).ready(function () {
+
+
+            $("#contact").submit((event) => {
+                event.preventDefault();
+
+                let cmnt = $("#cmnt").val();
+                let cmnt_1 = $("#cmnt-1").val();
+                let cmnt_2 = $("#cmnt-2").val();
+                $("p").append(`${cmnt} <br>`);
+                $("p").append(`${cmnt_1} <br>`);
+                $("p").append(`${cmnt_2} <br>`);
+                $("#cmnt").val(" ")
+                $("#cmnt-1").val(" ")
+                $("#cmnt-2").val(" ")
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>
