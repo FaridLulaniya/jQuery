@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./jquery-3.7.1.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            overflow: hidden;
+        }
+
+        nav {
+            width: 100%;
+            height: 55px;
+            background-color: gray;
+
+        }
+
+        button {
+            padding: 5px 15px;
+            margin-top: 10px;
+            margin-right: 17px;
+            float: right;
+        }
+
+        ul {
+            width: 140px;
+            height: 100vh;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            float: right;
+            align-items: flex-start;
+            list-style: none;
+            transform: translateX(200px);
+            transition: all 1s ease-in-out;
+            gap: 15px;
+        }
+        ul li{
+            margin-top: 30px;
+            font-weight: 700;
+            font-family: sans-serif;
+            /* cursor: default; */
+        }
+        #hide{
+            border-radius: 50%;
+            border: none;
+            background-color: transparent;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button id="btn"><i class="fa-solid fa-bars"></i></button>
+    </nav>
+    <ul>
+        <button id="hide"><i class="fa-solid fa-xmark"></i></button>
+        <li> <i class="fa-solid fa-house"></i> Home</li>
+        <li><i class="fa-solid fa-address-card"></i> About </li>
+        <li><i class="fa-solid fa-phone"></i> Contact Us</li>
+    </ul>
+
+    <script>
+        $(document).ready(function () {
+
+            $("button").click(() => {
+                $("ul").css("transform", "translateX(0px)")
+            })
+
+            $("#hide").click(() => {
+                $("ul").css("transform", "translateX(200px)")
+            })
+        });
+
+    </script>
+
+</body>
+
+</html>
