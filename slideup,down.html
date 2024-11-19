@@ -24,7 +24,6 @@
             width: 100%;
             height: 55px;
             background-color: gray;
-
         }
 
         button {
@@ -32,6 +31,7 @@
             margin-top: 10px;
             margin-right: 17px;
             float: right;
+            cursor: pointer;
         }
 
         ul {
@@ -39,14 +39,12 @@
             height: 100vh;
             background-color: rgb(255, 255, 255);
             display: flex;
-            text-align: center;
             flex-direction: column;
             float: right;
             align-items: flex-start;
             list-style: none;
-            transform: translateX(200px);
-            transition: all 1s ease-in-out;
-            gap: 15px;
+            display: none;
+            gap: 25px;
         }
 
         ul li {
@@ -61,7 +59,6 @@
             background-color: transparent;
             margin-left: 100px;
         }
-        
     </style>
 </head>
 
@@ -69,29 +66,31 @@
     <nav>
         <button id="btn"><i class="fa-solid fa-bars"></i></button>
     </nav>
-    <ul>
-        <button id="hide"><i class="fa-solid fa-xmark"></i></button>
-        <li> <i class="fa-solid fa-house"></i> Home</li>
-        <li><i class="fa-solid fa-address-card"></i> About=</li>
-        <li><i class="fa-solid fa-phone"></i> Contact Us</li>
-        <li><i class="fa-solid fa-gear"></i> Setting</li>
-
-    </ul>
-
+    <div>
+        <ul>
+            <button id="hide"><i class="fa-solid fa-xmark"></i></button>
+            <li><i class="fa-solid fa-house"></i> Home</li>
+            <li><i class="fa-solid fa-address-card"></i> About</li>
+            <li><i class="fa-solid fa-phone"></i> Contact Us</li>
+            <li><i class="fa-solid fa-gear"></i> Setting</li>
+        </ul>
+    </div>
     <script>
         $(document).ready(function () {
 
-            $("button").click(() => {
-                $("ul").css("transform", "translateX(0px)")
-            })
+            $("#btn").on("click", function () {
+                const $ul = $("ul");
 
-            $("#hide").click(() => {
-                $("ul").css("transform", "translateX(200px)")
-            })
+                if ($ul.is(':hidden')) {
+                    $ul.slideDown(2500);
+                }
+
+                $("#hide").on("click", function () {
+                    $("ul").slideUp(1500);
+                });
+            });
         });
-
     </script>
-
 </body>
 
 </html>
