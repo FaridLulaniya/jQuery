@@ -23,7 +23,7 @@
 
     .Main_div {
         height: 100vh;
-        width: 100%;
+        width: auto;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -50,7 +50,7 @@
         background-color: rgb(255 255 255 / 26%);
         padding: 10px;
         border-radius: 10px;
-        width: 300px;
+        width: auto;
     }
 
     .btn {
@@ -70,9 +70,10 @@
         cursor: pointer;
         border-radius: 10px;
     }
-    button:hover{
+
+    button:hover {
         scale: 1.1;
-        background-color: aliceblue;
+        background-color: rgba(240, 248, 255, 0.95);
         border: 2px solid black;
     }
 </style>
@@ -97,69 +98,69 @@
 
     </div>
     <script>
-       $(document).ready(() => {
-    let mins = $("#minutes");
-    let seconds = $("#seconds");
-    let Mseconds = $("#mseconds");
+        $(document).ready(() => {
+            let mins = $("#minutes");
+            let seconds = $("#seconds");
+            let Mseconds = $("#mseconds");
 
-    let start = $("#start");
-    let stop = $("#stop");
-    let reset = $("#reset");
+            let start = $("#start");
+            let stop = $("#stop");
+            let reset = $("#reset");
 
-    let millisecond = 0;
-    let sec = 0;
-    let min = 0;
+            let millisecond = 0;
+            let sec = 0;
+            let min = 0;
 
-    let intervalId = null; // Variable to store interval ID
+            let intervalId = null; // Variable to store interval ID
 
-    start.click(() => {
-        // Prevent multiple intervals from being created
-        if (!intervalId) {
-            intervalId = setInterval(() => {
-                millisecond++;
-                Mseconds.text((millisecond < 10) ? `0${millisecond}  ` : `${millisecond} `);
+            start.click(() => {
+                // Prevent multiple intervals from being created
+                if (!intervalId) {
+                    intervalId = setInterval(() => {
+                        millisecond++;
+                        Mseconds.text((millisecond < 10) ? ` 0${millisecond} ` : ` ${millisecond} `);
 
-                if (millisecond == 100) {
-                    millisecond = 0;
-                    sec++;
-                    seconds.text((sec < 10) ? `0${sec} : ` : `${sec} : `);
+                        if (millisecond == 100) {
+                            millisecond = 0;
+                            sec++;
+                            seconds.text((sec < 10) ? ` 0${sec} :` : ` ${sec} :`);
 
-                    if (sec == 60) {
-                        sec = 0;
-                        min++;
-                        mins.text((min < 10) ? `0${min} : ` : `${min} : `);
+                            if (sec == 60) {
+                                sec = 0;
+                                min++;
+                                mins.text((min < 10) ? ` 0${min} : ` : ` ${min} : `);
 
-                        if (min == 60) {
-                            min = 0;
+                                if (min == 60) {
+                                    min = 0;
+                                }
+                            }
                         }
-                    }
+                    }, 10);
                 }
-            }, 10);
-        }
-    });
+            });
 
-    stop.click(() => {
-        // Stop the interval
-        if (intervalId) {
-            clearInterval(intervalId);
-            intervalId = null; // Reset interval ID
-        }
-    });
+            stop.click(() => {
+                // Stop the interval
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null; // Reset interval ID
+                }
+            });
 
-    reset.click(() => {
-        // Stop the interval and reset values
-        if (intervalId) {
-            clearInterval(intervalId);
-            intervalId = null;
-        }
-        millisecond = 0;
-        sec = 0;
-        min = 0;
-        mins.text("00 :");
-        seconds.text(" 00 : ");
-        Mseconds.text(" 00");
-    });
-});
+            reset.click(() => {
+                // Stop the interval and reset values
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                }
+                millisecond = 0;
+                sec = 0;
+                min = 0;
+                mins.text("00 :");
+                seconds.text(" 00 : ");
+                Mseconds.text(" 00");
+            });
+        });
 
 
     </script>
